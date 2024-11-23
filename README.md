@@ -4,9 +4,9 @@ Sistema Bancário para gerenciamento e criações contas
 ### Autores: 
 
 
-202302570 - Matheus Teles Marques
-202307122 - Victor Alves Freire De Queiroz
-202302594 - Yan Santos Leite
+-202302570 - Matheus Teles Marques 
+-202307122 - Victor Alves Freire De Queiroz
+-202302594 - Yan Santos Leite
 
 
 
@@ -131,5 +131,5 @@ Histórico de transações: Assegurar que o histórico de transações seja regi
 ## Fluxograma: 
 
 Segue o Fluxograma do projeto: 
-![Fluxograma do Projeto](assets/fluxogramaa.jpg)
+![Fluxograma do Projeto](assets/FluxogramaFinal.jpg)
 
