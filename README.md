@@ -3,6 +3,7 @@ Sistema Bancário para gerenciamento e criações contas
 
 ## Autores: 
 
+
 - 202302570 - Matheus Teles Marques 
 - 202307122 - Victor Alves Freire De Queiroz
 - 202302594 - Yan Santos Leite
@@ -72,64 +73,71 @@ Para o  desenvolvimento do sistema bancário foram seguidos os seguintes passos:
 ### Planejamento:
 
 Essa etapa  consistiu da análise do funcionamento de Sistemas Bancários, onde foram identificadas as seguintes funcionalidades essenciais:
-Criação e acesso a conta;
-Saque, depósito e transferências;
+* Criação e acesso a conta;
+* Saque, depósito e transferências;
 
 ### Implementação:
 
-* Tela de Menu e Opções: A tela de menu inicial apresenta as opções de cadastro de conta e acesso a conta (caso a conta já esteja ativa no sistema);
+* Tela de Menu e Opções:
 
-* Cadastro de Conta: Ao selecionar a opção de cadastro de conta, o usuário informa seus dados pessoais, especifica o tipo de conta a ser criada e a quantia que deseja abrir na conta;
-Esses dados são armazenados em uma struct;
+  A tela de menu inicial apresenta as opções de cadastro de conta e acesso a conta (caso a conta já esteja ativa no sistema);
+
+* Cadastro de Conta:
+
+  Ao selecionar a opção de cadastro de conta, o usuário informa seus dados pessoais, especifica o tipo de conta a ser criada e a quantia que deseja abrir na conta;
+  Esses dados são armazenados em uma struct;
 
 * Geração de Número de Conta e PIN:
 
-Após o cadastro, o número da conta e o PIN do usuário são gerados por meio de um algoritmo de randomização;
-Acesso à Conta: O usuário tem a opção de acessar sua conta;
-Para isso, passa por uma etapa de autenticação utilizando uma tabela hash que mapeia o número da conta ao seu registro;
+  Após o cadastro, o número da conta e o PIN do usuário são gerados por meio de um algoritmo de randomização;
+  
+* Acesso à Conta:
+
+  O usuário tem a opção de acessar sua conta;
+  Para isso, passa por uma etapa de autenticação utilizando uma tabela hash que mapeia o número da conta ao seu registro;
 
 * Operações na Conta:
 
-Após a autenticação, o usuário pode realizar as seguintes operações:
-
- * Depósito;
- * Saque;
- * Transferência;
- * Consultar saldo;
+Após a autenticação, o usuário pode realizar as seguintes operações:Depósito; Saque; Transferência; Consultar saldo;
 
 * Exclusão de Conta:
-O usuário também tem a opção de deletar a conta, caso deseje;
+
+  O usuário também tem a opção de deletar a conta, caso deseje;
 
 * Estrutura de Dados do Sistema:
-A atualização do conjunto de usuários do sistema será feita utilizando listas;
-As listas também serão responsáveis por manter o histórico de transações de cada usuário;
+
+  A atualização do conjunto de usuários do sistema será feita utilizando listas;
+  As listas também serão responsáveis por manter o histórico de transações de cada usuário;
 
 * Navegação e Desfazer Operações:
-A navegação pelos menus e a funcionalidade de desfazer operações serão implementadas utilizando pilhas;
+
+  A navegação pelos menus e a funcionalidade de desfazer operações serão implementadas utilizando pilhas;
 
 ### Testes:
 
 * Gerenciamento de contas:
 
-Garantir que as contas bancárias sejam localizadas de forma rápida e eficiente, com tratamento adequado de possíveis colisões de dados;
+  Garantir que as contas bancárias sejam localizadas de forma rápida e eficiente, com tratamento adequado de possíveis colisões de dados;
 
 * Processamento de transações:
 
-Assegurar que as transações como saques e depósitos sejam realizadas na ordem correta, processando primeiro as mais antigas.
+  Assegurar que as transações como saques e depósitos sejam realizadas na ordem correta, processando primeiro as mais antigas.
 
 * Armazenamento de informações de conta:
 
-Validar que os dados da conta bancária sejam armazenados corretamente e possam ser acessados facilmente;
+  Validar que os dados da conta bancária sejam armazenados corretamente e possam ser acessados facilmente;
 
 * Gestão de transações reversíveis:
 
-Garantir que transações que precisam ser desfeitas, como estornos, sejam revertidas corretamente na ordem inversa;
-Histórico de transações: Assegurar que o histórico de transações seja registrado corretamente e possa ser consultado de forma eficiente;
+  Garantir que transações que precisam ser desfeitas, como estornos, sejam revertidas corretamente na ordem inversa;
 
+* Histórico de transações: 
+  
+  Assegurar que o histórico de transações seja registrado corretamente e possa ser consultado de forma eficiente;
 
-## Fluxograma: 
-
+Fluxograma:
 Segue o Fluxograma do projeto: 
 
 ![Fluxograma do Projeto](assets/FluxogramaFinal.jpg)
+
 
