@@ -1,12 +1,11 @@
 # Sistema Bancário
 Sistema Bancário para gerenciamento e criações contas 
 
-### Autores: 
+## Autores: 
 
-
--202302570 - Matheus Teles Marques 
--202307122 - Victor Alves Freire De Queiroz
--202302594 - Yan Santos Leite
+- 202302570 - Matheus Teles Marques 
+- 202307122 - Victor Alves Freire De Queiroz
+- 202302594 - Yan Santos Leite
 
 
 
