@@ -130,5 +130,6 @@ Histórico de transações: Assegurar que o histórico de transações seja regi
 ## Fluxograma: 
 
 Segue o Fluxograma do projeto: 
+
 ![Fluxograma do Projeto](assets/FluxogramaFinal.jpg)
 
