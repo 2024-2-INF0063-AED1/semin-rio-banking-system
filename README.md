@@ -39,7 +39,24 @@ O dataset utilizado no projeto contém informações fornecidas pelos clientes n
 ### Métodos
 
 O sistema bancário utiliza conceitos de estrutura de dados e algoritmos na linguagem C garantindo assim uma maior performance, necessária para processar grandes volumes de transações simultaneamente,além de fornecer um nível de controle maior,o que é útil para sistemas bancários que precisam ser otimizados e protegidos contra falhas de segurança como gerenciamento inadequado de memória.
-Structs: Permitem agrupar diferentes tipos de dados sob uma única entidade. Modelo de conta: Uma Struct pode armazenar informações detalhadas de uma conta, como número da conta, titular, saldo e PIN. Transações: Outra Struct pode representar as transações, incluindo tipo (saque, depósito), valor e data;
+Structs: Permitem agrupar diferentes tipos de dados sob uma única entidade. Modelo de conta: Uma Struct pode armazenar informações detalhadas de uma conta, como número da conta, titular, saldo e PIN. Transações: Outra Struct pode representar as transações, incluindo tipo (saque, depósito), valor e data; As principais Estruturas de Dados utilizadas, são: 
+
+* Listas Ligadas (Linked Lists) :
+* Pilhas (Stacks):
+* Hash Tables:
+
+
+### Avaliação:
+
+Os critérios utilizados para avaliar serão:
+   * Tempo de Execução;
+   * Uso de Memória; 
+   * Nível de manutenção e modularidade;
+
+## Fundamentos Teóricos
+
+
+Os fundamentos teóricos são conceitos essenciais que guiam o desenvolvimento, influenciando as decisões técnicas. Nesse sentido, o projeto desenvolvido visa garantir que o sistema bancário seja robusto, seguro e eficiente, lidando com grandes volumes de dados e transações de forma escalável. Para se alcançar tal resultado esperado utilizaremos Estrutura de Dados elementares, como:
 
 * Listas Ligadas (Linked Lists) :
 Uma estrutura de dados dinâmica onde cada elemento (nó) aponta para o próximo. Histórico de transações: Usar uma lista ligada permite que o histórico cresça ou diminua dinamicamente sem necessidade de redimensionar arrays. Gestão de usuários: Para sistemas com muitos usuários, uma lista ligada facilita adicionar, remover e pesquisar informações;
@@ -52,18 +69,20 @@ Estruturas que seguem o princípio LIFO (Last In, First Out). Navegação no men
 * Hash Tables:
 Estruturas que armazenam dados em pares chave-valor para acesso rápido. Aplicação no sistema: Autenticação: Gerenciar login e autenticação por meio de hash tables, onde a chave é o número da conta e o valor é o PIN. Mapeamento de contas: Associar rapidamente números de conta a seus respectivos registros;
 
+Na optica da avaliação, o sistema será avaliado pelas seguintes técnicas:
 
-### Avaliação:
+* Tempo de Resposta:
+Mede a rapidez em processar operações críticas, como saques, depósitos e consultas, garantindo uma experiência ágil para os usuários.
+* Uso de Memória:
+Avalia a eficiência no consumo de recursos, priorizando a otimização para gerenciar grandes volumes de contas e transações.
+* Escalabilidade:
+Analisa como o sistema se comporta à medida que cresce o número de usuários e transações, assegurando estabilidade e eficiência.
 
-Os critérios utilizados para avaliar serão:
-   * Tempo de Execução;
-   * Uso de Memória; 
-   * Nível de manutenção e modularidade:
+* Testes de Performance:
+Medem o tempo de execução e o uso de recursos sob condições normais de operação.
 
-## Fundamentos Teóricos
+Assim, a fim de obter feedbacks que possam nortear as próximas versões e consequentemente permitir um melhor desenvolvimento da aplicação, proporcionando uma melhor experiência aos usuários, os testes tem uma grande importância dentro do projeto.
 
-
-Será feito futuramente!!!
 
 ## Metodologia
 
