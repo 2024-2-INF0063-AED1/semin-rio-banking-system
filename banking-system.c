@@ -10,13 +10,77 @@ typedef struct{
     char email[50];
     char senha[8];
     char genero; 
-    char telefone[9];
+    char telefone[12];
     char cpf[12];
     float rendaMensal;
     char tipoConta[12];
     int numeroConta;
     
 }Cliente;
+
+//Estrutura para a lista
+typedef struct No{
+    Cliente cliente;
+    struct No *proximo;
+
+}No;
+
+
+// alocacao dinamica para os nos 
+No *criarNo(Cliente cliente){
+    No *novo = (No*)malloc(sizeof(No));
+    if (novo == NULL) {
+        printf("Erro ao alocar memória!\n");
+        exit(1);
+    }
+    novo->cliente = cliente;
+    novo -> proximo = NULL;
+    return novo;
+}
+
+// inserindo clientes na lista
+void inserirCliente(No** cabeca, Cliente cliente){
+    No* novo = criarNo(cliente);
+    
+    if(*cabeca == NULL){
+        *cabeca = novo;
+    }
+    else{
+        No* atual = *cabeca;
+        while(atual->proximo != NULL){
+            atual = atual->proximo;
+        }
+        atual->proximo = novo;
+    }
+    
+    
+}
+
+// funcao que exibe os clientes que estao na lista
+void exibirClientes(No* cabeca) {
+
+    if (cabeca == NULL) {
+        printf("Nenhuma conta cadastrada!\n");
+        return;
+    }
+    
+    No* atual = cabeca;
+
+    printf("\nLista de Clientes Cadastrados:\n");
+    while (atual != NULL) {
+        printf("-------------------------------\n");
+        printf("Nome: %s\n", atual->cliente.nome);
+        printf("Email: %s\n", atual->cliente.email);
+        printf("Genero: %c\n", atual->cliente.genero);
+        printf("Telefone: %s\n", atual->cliente.telefone);
+        printf("CPF: %s\n", atual->cliente.cpf);
+        printf("Renda Mensal: R$ %.2f\n", atual->cliente.rendaMensal);
+        printf("Tipo de Conta: %s\n", atual->cliente.tipoConta);
+        printf("Numero da Conta: %d\n", atual->cliente.numeroConta);
+        atual = atual->proximo;
+    }
+    printf("-------------------------------\n");
+}
 
 //Funçao com a logica para validacao do CPF informado
 bool validaCpf(Cliente *cliente){
@@ -73,7 +137,7 @@ bool validaCpf(Cliente *cliente){
             dig2 = 11 - resto;
 
         if((cliente->cpf[9] - '0' == dig1) && (cliente->cpf[10] - '0' == dig2)){
-            printf("CPF VALIDADO!");
+            printf("CPF VALIDADO!\n");
             return true;
         }
         else{
@@ -152,7 +216,7 @@ void criarConta (Cliente *cliente){
 }
 
 //Funçao que inicializa o menu principal
-void menuPrincipal(int *escolha, Cliente *cliente){
+void menuPrincipal(int *escolha, Cliente *cliente, No** cabeca){
     printf("--------------------------------");
     printf("\n          Sistema Bancario     \n");
     printf("--------------------------------\n");
@@ -165,12 +229,15 @@ void menuPrincipal(int *escolha, Cliente *cliente){
     switch(*escolha){
         case 1:
             criarConta(cliente);
+            inserirCliente(cabeca, *cliente);
             break;
 
         case 2:
-            /*acessarConta();
+            
+            exibirClientes(*cabeca);  // Exibe a lista de clientes cadastrados
+            
             break;
-            */
+
         case 3:
             /*encerrar programa*/
             break;
@@ -193,9 +260,9 @@ int main() {
 
     int escolha;
     Cliente cliente;
-
+    No* cabeca = NULL;
     do{
-        menuPrincipal(&escolha, &cliente);
+        menuPrincipal(&escolha, &cliente, &cabeca);
 
     }while(escolha != 3);
 
