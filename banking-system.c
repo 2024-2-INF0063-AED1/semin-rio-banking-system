@@ -8,12 +8,14 @@
 typedef struct{
     char nome[50];
     char email[50];
+    char senha[8];
     char genero; 
     char telefone[9];
     char cpf[12];
     float rendaMensal;
     char tipoConta[12];
- 
+    int numeroConta;
+    
 }Cliente;
 
 //Funçao com a logica para validacao do CPF informado
@@ -82,9 +84,16 @@ bool validaCpf(Cliente *cliente){
     }
 }
 
+// Função que gera numero aleatorio da conta
+void numeroConta(Cliente *cliente) { 
+    srand(time(NULL));  
+
+    
+    cliente->numeroConta = (rand() % 999999) + 100000;  
+}
 
 //Funçao para criaçao de conta
-void criarConta(Cliente *cliente){
+void criarConta (Cliente *cliente){
     
     printf("--------------------------------");
     printf("\n           Criar  Conta       \n");
@@ -100,7 +109,11 @@ void criarConta(Cliente *cliente){
     printf("Email: ");
     scanf("%s", cliente->email);
     printf("%s\n",cliente -> email);
-    
+
+    printf("Senha(max. 8): ");
+    scanf("%s", cliente->senha);
+    printf("%s\n", cliente->senha);
+
 
     printf("Genero feminino(F)/Masculino(M)/Outro(O): ");
     getchar();
@@ -130,7 +143,10 @@ void criarConta(Cliente *cliente){
     printf("3. Poupanca;\n");
     scanf("%s", cliente->tipoConta);
 
-    printf("\n");
+
+    numeroConta(cliente);
+    printf("\n Numero Conta: %d\n", cliente->numeroConta);
+
     printf("Cadastro feito com sucesso!!!\n");
 
 }
@@ -172,15 +188,6 @@ void acessarConta(){
     printf("--------------------------------\n");
 }
 
-// int geraNumeroConta(){
-//     srand(time(NULL));
-
-//     numeroConta =(rand() % 900000 ) + 100000;
-
-
-//     returnnumeroConta;
-//  }
-
 //Funçao principal
 int main() {
 
@@ -195,7 +202,3 @@ int main() {
 
     return 0;
 }
-
-
-
-
