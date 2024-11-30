@@ -333,8 +333,62 @@ void criarConta (Cliente *cliente){
 
 }
 
+// Funcao para buscar cliente por CPF
+No *buscarPorCPF(No *cabeca, const char *cpf) {
+    No *atual = cabeca;
+    while (atual != NULL) {
+        if (strcmp(atual->cliente.cpf, cpf) == 0) {
+            return atual;
+        }
+        atual = atual->proximo;
+    }
+    return NULL;
+}
+
+void acessarConta(No *cabeca) {
+    char cpf[12];  // Define um array para armazenar o CPF do cliente a ser buscado
+
+    // Solicita o CPF para buscar a conta
+    barraNaTela();
+    printf("        Acesso  a Conta     ");
+    barraNaTela();
+
+    printf("Digite o CPF para acessar a conta: ");
+    scanf("%s", cpf);
+
+    limparTela();
+
+    // Busca o cliente na lista de contas
+    No* clienteEncontrado = buscarPorCPF(cabeca, cpf);
+
+    if (clienteEncontrado != NULL) {
+        
+        printf("\nConta Encontrada:\n");
+        printf("Nome: %s\n", clienteEncontrado->cliente.nome);
+        printf("Email: %s\n", clienteEncontrado->cliente.email);
+        printf("Genero: %c\n", clienteEncontrado->cliente.genero);
+        printf("Telefone: %s\n", clienteEncontrado->cliente.telefone);
+        printf("CPF: %s\n", clienteEncontrado->cliente.cpf);
+        printf("Saldo: R$ %.2f\n", clienteEncontrado->cliente.saldo);
+        printf("Tipo de Conta: %c\n", clienteEncontrado->cliente.tipoConta);
+        printf("Numero da Conta: %d\n", clienteEncontrado->cliente.numeroConta);
+    } else {
+        
+        printf("\nCliente com CPF %s não encontrado.\n", cpf);
+    }
+
+    barraNaTela();
+    system("PAUSE");
+    limparTela();
+
+    getchar();  
+    getchar();  
+}
+
 //Funçao que inicializa o menu principal
-void menuPrincipal(int *escolha, Cliente *cliente, No** cabeca){
+void menuPrincipal(int *escolha, Cliente *cliente, No** cabeca) {
+
+    do { 
     barraNaTela();
     printf("\n          Sistema Bancario     \n");
     barraNaTela();
@@ -346,17 +400,15 @@ void menuPrincipal(int *escolha, Cliente *cliente, No** cabeca){
 
     limparTela();
 
-    switch(*escolha){
+    switch(*escolha){   
         case 1:
             criarConta(cliente);
             inserirCliente(cabeca, *cliente);
             break;
 
-        case 2:
-            
-            exibirClientes(*cabeca);  // Exibe a lista de clientes cadastrados
-            
-            break;
+        case 2: 
+        acessarConta(*cabeca);
+        break;
 
         case 3:
             /*encerrar programa*/
@@ -366,6 +418,7 @@ void menuPrincipal(int *escolha, Cliente *cliente, No** cabeca){
             break;
     }
 
+} while (*escolha != 3);
 }
 
 //Funçao principal

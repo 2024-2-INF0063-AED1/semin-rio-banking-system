@@ -13,10 +13,3 @@ void limparTela(){
 void barraNaTela(){
     printf("\n--------------------------------\n");
 }
-
-//Funçao para acessar a conta do usuario
-void acessarConta(){
-    barraNaTela();
-    printf("\n          Acessar Conta       \n");
-    barraNaTela();
-}
