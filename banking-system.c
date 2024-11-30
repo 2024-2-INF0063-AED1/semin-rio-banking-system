@@ -4,6 +4,9 @@
 #include <string.h>
 #include <time.h>
 
+// Adicionando arquivos externos(modularização);
+#include "funcoesVoid.h"
+
 //Estrutura para armazenar os dados referentes ao cliente
 typedef struct{
     char nome[50];
@@ -68,7 +71,7 @@ void exibirClientes(No* cabeca) {
 
     printf("\nLista de Clientes Cadastrados:\n");
     while (atual != NULL) {
-        printf("-------------------------------\n");
+        barraNaTela();
         printf("Nome: %s\n", atual->cliente.nome);
         printf("Email: %s\n", atual->cliente.email);
         printf("Genero: %c\n", atual->cliente.genero);
@@ -79,7 +82,7 @@ void exibirClientes(No* cabeca) {
         printf("Numero da Conta: %d\n", atual->cliente.numeroConta);
         atual = atual->proximo;
     }
-    printf("-------------------------------\n");
+    barraNaTela();
 }
 
 //Funçao com a logica para validacao do CPF informado
@@ -159,9 +162,9 @@ void numeroConta(Cliente *cliente) {
 //Funçao para criaçao de conta
 void criarConta (Cliente *cliente){
     
-    printf("--------------------------------");
+    barraNaTela();
     printf("\n           Criar  Conta       \n");
-    printf("--------------------------------\n");
+    barraNaTela();
 
     printf("Nome: ");
     getchar();
@@ -209,22 +212,28 @@ void criarConta (Cliente *cliente){
 
 
     numeroConta(cliente);
-    printf("\n Numero Conta: %d\n", cliente->numeroConta);
+    printf("\nNumero Conta: %d\n", cliente->numeroConta);
 
     printf("Cadastro feito com sucesso!!!\n");
+
+    system("PAUSE");
+    barraNaTela();
+    limparTela();
 
 }
 
 //Funçao que inicializa o menu principal
 void menuPrincipal(int *escolha, Cliente *cliente, No** cabeca){
-    printf("--------------------------------");
+    barraNaTela();
     printf("\n          Sistema Bancario     \n");
-    printf("--------------------------------\n");
+    barraNaTela();
     printf("1. Criar Conta;\n");
     printf("2. Acessar Conta;\n");
     printf("3. Sair do programa;\n");
     printf("Digite o numero de uma das opcoes validas: ");
     scanf("%d", escolha);
+
+    limparTela();
 
     switch(*escolha){
         case 1:
@@ -248,19 +257,13 @@ void menuPrincipal(int *escolha, Cliente *cliente, No** cabeca){
 
 }
 
-//Funçao para acessar a conta do usuario
-void acessarConta(){
-    printf("--------------------------------");
-    printf("\n          Acessar Conta       \n");
-    printf("--------------------------------\n");
-}
-
 //Funçao principal
 int main() {
 
     int escolha;
     Cliente cliente;
     No* cabeca = NULL;
+    
     do{
         menuPrincipal(&escolha, &cliente, &cabeca);
 
