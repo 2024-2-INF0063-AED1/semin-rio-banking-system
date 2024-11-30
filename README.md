@@ -154,7 +154,8 @@ Após a autenticação, o usuário pode realizar as seguintes operações:Depós
   
   Assegurar que o histórico de transações seja registrado corretamente e possa ser consultado de forma eficiente;
 
-### Resultados: O desenvolvimento do programa utilizando listas encadeadas resultou em um sistema funcional e eficiente, capaz de gerenciar dados dinâmicos de maneira prática e estruturada. O código foi projetado para executar operações essenciais, como adicionar elementos ao final da lista, exibir os valores armazenados e liberar a memória utilizada. Durante os testes, ficou evidente que o programa faz um uso eficiente da memória, aproveitando as características dinâmicas das listas encadeadas, que eliminam a necessidade de pré-alocar grandes blocos de memória.
+### Resultados: 
+O desenvolvimento do programa utilizando listas encadeadas resultou em um sistema funcional e eficiente, capaz de gerenciar dados dinâmicos de maneira prática e estruturada. O código foi projetado para executar operações essenciais, como adicionar elementos ao final da lista, exibir os valores armazenados e liberar a memória utilizada. Durante os testes, ficou evidente que o programa faz um uso eficiente da memória, aproveitando as características dinâmicas das listas encadeadas, que eliminam a necessidade de pré-alocar grandes blocos de memória.
 
 Cada elemento alocado foi liberado corretamente ao final da execução, prevenindo vazamentos de memória, o que é essencial em linguagens como C, nas quais a gestão manual da memória é obrigatória. A função responsável pela liberação percorreu toda a lista, nó a nó, garantindo que todos os recursos alocados fossem devolvidos ao sistema.
 
@@ -162,7 +163,7 @@ A escolha pelas listas encadeadas é respaldada teoricamente pelo renomado livro
 
 Durante os testes, constatou-se que o tempo necessário para percorrer e liberar a lista cresce linearmente com o número de elementos. Esse comportamento está em perfeita concordância com as expectativas teóricas associadas ao funcionamento de listas encadeadas.
 
-###Conclusão:
+### Conclusão:
 Os resultados demonstraram que o programa atende plenamente aos critérios de eficiência, segurança e modularidade, evidenciando sua viabilidade para aplicações práticas, como sistemas bancários ou gerenciadores de estoque. O projeto destacou a importância de um planejamento cuidadoso e de uma estrutura modular, que não apenas facilita a manutenção, mas também possibilita a expansão do sistema. Além disso, reforçou o papel fundamental das listas encadeadas como uma solução flexível e eficaz para lidar com problemas que envolvem dados dinâmicos.
 
 Fluxograma:
