@@ -245,7 +245,7 @@ bool validaCpf(Cliente *cliente){
         }
 
     }
-}
+} 
 
 // Função que gera numero aleatorio da conta
 void numeroConta(Cliente *cliente) { 
@@ -366,8 +366,52 @@ void DadosConta(No *clienteEncontrado) {
     limparTela();
 }
 
+int transferir(No* cabeca, int numeroContaOrigem, int numeroContaDestino, float valor) {
+    if (valor <= 0) {
+        printf("Valor de transferencia deve ser positivo.\n");
+        return 0;
+    }
+
+    if (numeroContaOrigem == numeroContaDestino) {
+        printf("Transferencia entre a mesma conta nao permitida.\n");
+        return 0;
+    }
+
+    No* origem = NULL;
+    No* destino = NULL;
+    No* atual = cabeca;
+
+    // Busca ambas as contas em uma única iteração
+    while (atual != NULL && (origem == NULL || destino == NULL)) {
+        if (atual->cliente.numeroConta == numeroContaOrigem) {
+            origem = atual;
+        } else if (atual->cliente.numeroConta == numeroContaDestino) {
+            destino = atual;
+        }
+        atual = atual->proximo;
+    }
+
+    if (origem == NULL || destino == NULL) {
+        printf("Conta%s nao encontrada.\n", origem == NULL ? " de origem" : " de destino");
+        return 0;
+    }
+
+    if (origem->cliente.saldo < valor) {
+        printf("Saldo insuficiente na conta de origem.\n");
+        return 0;
+    }
+
+    origem->cliente.saldo -= valor;
+    destino->cliente.saldo += valor;
+
+    printf("Transferencia de R$%.2f realizada com sucesso de conta %d para conta %d.\n", 
+           valor, numeroContaOrigem, numeroContaDestino);
+    return 1;
+}
+
 void acessarConta(No *cabeca) {
     char cpf[12];  
+    char senha [8];
 
     // Solicita o CPF para buscar a conta
     barraNaTela();
@@ -383,6 +427,9 @@ void acessarConta(No *cabeca) {
     No* clienteEncontrado = buscarPorCPF(cabeca, cpf);
 
     if (clienteEncontrado != NULL) {
+
+        printf("Digite a senha: ");
+        scanf("%s", senha);
 
     int escolha; // Declaração da variável escolha fora do loop
 
@@ -405,10 +452,27 @@ void acessarConta(No *cabeca) {
             case 1:
                 DadosConta(clienteEncontrado);
                 break;
-            case 2:
-                printf("Transferencias...\n");
-                system("PAUSE");
-                break;
+            case 2: {
+                    int numeroContaDestino;
+                    float valor;
+
+                    // Solicita informações para a transferência
+                    printf("Digite o numero da conta do destinatario: ");
+                    scanf("%d", &numeroContaDestino);
+
+                    printf("Digite o valor da transferencia: ");
+                    scanf("%f", &valor);
+
+                    // Chama a função de transferência
+                    if (transferir(cabeca, clienteEncontrado->cliente.numeroConta, numeroContaDestino, valor)) {
+                        printf("Transferencia realizada com sucesso!\n");
+                    } else {
+                        printf("Falha na transferencia.\n");
+                    }
+
+                    system("PAUSE");
+                    break;
+                }
             case 3:
                 printf("Depositos\n");
                 system("PAUSE");
