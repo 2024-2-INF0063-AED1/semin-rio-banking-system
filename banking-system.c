@@ -366,6 +366,92 @@ void DadosConta(No *clienteEncontrado) {
     limparTela();
 }
 
+// funcao para deposito de valores na conta
+void depositar(No *clienteEncontrado){
+    float valorDepositado;
+    char cpfConfirmacao[12];
+   
+    
+    do{
+        barraNaTela();
+        printf("    Deposito   ");
+        barraNaTela();
+        printf("Por favor, informe o CPF para validar a operação: \n");
+        scanf("%s", cpfConfirmacao);
+
+        
+        if (strcmp(cpfConfirmacao, clienteEncontrado->cliente.cpf) == 0) {
+
+            printf("Digite o valor do deposito R$ \n");
+            scanf("%f", &valorDepositado);
+
+            clienteEncontrado->cliente.saldo +=  valorDepositado;
+
+            printf("Valor depositado com seu sucesso!\n");
+            printf("Seu saldo atual R$ %.2f", clienteEncontrado->cliente.saldo);
+
+            barraNaTela();
+            system("PAUSE");
+            limparTela();
+        }
+        else {
+            printf("Conta inexistente com esse CPF.Tente novamente\n");
+            system("PAUSE");
+            limparTela();
+
+        }
+    }while(strcmp(cpfConfirmacao, clienteEncontrado->cliente.cpf) != 0);
+    
+
+}
+// funcao que calcula um juros para o saque a depender do tipo da conta
+void calcularJuros(No *clienteEncontrado, float *juros){
+    
+    if(clienteEncontrado->cliente.tipoConta == 'p'){
+        *juros = 0.005;
+    }
+    else if(clienteEncontrado->cliente.tipoConta == 'c'){
+        *juros = 0.01;
+    }
+    else if(clienteEncontrado->cliente.tipoConta == 'j'){
+        *juros = 0.02;
+    }
+   
+}
+// funcao para sacar um valor
+void sacar(No *clienteEncontrado){
+    float valorSacado;
+    char cpfConfirmacao[12];
+    float juros;
+    do{
+        barraNaTela();
+        printf("    Saque   ");
+        barraNaTela();
+        printf("Por favor, informe o CPF para validar a operação: \n");
+        scanf("%s", cpfConfirmacao);
+
+        if (strcmp(cpfConfirmacao, clienteEncontrado->cliente.cpf) == 0) {
+
+            printf("Digite o valor para o saque R$ \n");
+            scanf("%f", &valorSacado);
+            calcularJuros(clienteEncontrado, &juros);
+            clienteEncontrado->cliente.saldo = clienteEncontrado->cliente.saldo - (valorSacado + (valorSacado * juros));
+
+            printf("Valor sacado com sucesso!\n");
+            printf("Seu saldo atual R$ %.2f", clienteEncontrado->cliente.saldo);
+
+            barraNaTela();
+            system("PAUSE");
+            limparTela();
+        }
+        else {
+            printf("Conta inexistente com esse CPF.Tente novamente\n");
+            system("PAUSE");
+            limparTela();
+
+        }
+    }while(strcmp(cpfConfirmacao, clienteEncontrado->cliente.cpf) != 0);
+}
 void acessarConta(No *cabeca) {
     char cpf[12];  
 
@@ -391,12 +477,12 @@ void acessarConta(No *cabeca) {
         printf("      Menu Da Conta:    ");
         barraNaTela();
 
-        printf("\n1. Dados Da Conta;\n");
+        printf("1. Dados Da Conta;\n");
         printf("2. Transferencias;\n");
         printf("3. Fazer Depositos;\n");
-        printf("4. Excluir Conta;\n");
+        printf("4. Saques\n");
         printf("5. Sair;\n");
-        printf("*Digite um dos valores: ");
+        printf("6. Excluir Conta;\n");
         scanf("%d", &escolha);
 
         limparTela();
@@ -406,28 +492,29 @@ void acessarConta(No *cabeca) {
                 DadosConta(clienteEncontrado);
                 break;
             case 2:
-                printf("Transferencias...\n");
+                printf("Transferencia\n");
                 system("PAUSE");
                 break;
             case 3:
-                printf("Depositos\n");
-                system("PAUSE");
+                depositar(clienteEncontrado);
                 break;
             case 4:
-                printf("Excluir Conta;\n");
-                system("PAUSE");
+                sacar(clienteEncontrado);
                 break;
             case 5:
                 printf("Saindo Da Conta;\n");
                 system("PAUSE");
                 break;
+            case 6:
+                printf("Deletar conta");
+                system("PAUSE");
             default:
-                printf("\nPor favor, digite um valor de 1 a 5.\n");
+                printf("\nPor favor, digite um valor de 1 a 6.\n");
                 system("PAUSE");
                 break;
         }
 
-    } while (escolha != 5); // Verificação correta da condição do loop
+    } while (escolha != 5); 
     } 
     else {
         
@@ -452,7 +539,6 @@ void menuPrincipal(int *escolha, Cliente *cliente, No** cabeca) {
     printf("1. Criar Conta;\n");
     printf("2. Acessar Conta;\n");
     printf("3. Sair do programa;\n");
-    printf("Digite o numero de uma das opcoes validas: ");
     scanf("%d", escolha);
 
     limparTela();
