@@ -281,8 +281,6 @@ void criarConta (Cliente *cliente){
         printf("%s\n", cliente->senha);
     }while(!validaSenha(cliente));
 
-    
-
     do{
         printf("Genero feminino(F)/Masculino(M)/Outro(O): ");
         getchar();
@@ -325,7 +323,11 @@ void criarConta (Cliente *cliente){
     numeroConta(cliente);
     printf("\nNumero Conta: %d\n", cliente->numeroConta);
 
+    barraNaTela();
+
     printf("Cadastro feito com sucesso!!!\n");
+
+    barraNaTela();
 
     system("PAUSE");
     barraNaTela();
@@ -345,13 +347,64 @@ No *buscarPorCPF(No *cabeca, const char *cpf) {
     return NULL;
 }
 
+void excluirConta(No **cabeca, No *clienteEncontrado) {
+    char confirmacao;
+
+    printf("\nTem certeza que deseja excluir a conta? (S/N): ");
+    getchar(); 
+    scanf("%c", &confirmacao);
+
+    if (confirmacao == 'S' || confirmacao == 's') {
+        char cpfConfirmacao[12]; 
+
+
+        printf("\nDigite o CPF para confirmar a exclusao: ");
+        scanf("%s", cpfConfirmacao);
+
+        if (strcmp(clienteEncontrado->cliente.cpf, cpfConfirmacao) == 0) {
+
+            
+            strcpy(clienteEncontrado->cliente.cpf, "00000000000");  
+            strcpy(clienteEncontrado->cliente.nome, "");  
+            strcpy(clienteEncontrado->cliente.email, "");  
+            strcpy(clienteEncontrado->cliente.telefone, "");  
+            strcpy(clienteEncontrado->cliente.senha, "");  
+            clienteEncontrado->cliente.saldo = 0.0;  
+            clienteEncontrado->cliente.tipoConta = '\0';  
+            clienteEncontrado->cliente.numeroConta = 0;  
+
+            if (*cabeca == clienteEncontrado) {
+                *cabeca = clienteEncontrado->proximo;
+            } else {
+                No *atual = *cabeca;
+                while (atual != NULL && atual->proximo != clienteEncontrado) {
+                    atual = atual->proximo;
+                }
+                if (atual != NULL) {
+
+                    atual->proximo = clienteEncontrado->proximo;
+                }
+            }
+
+            free(clienteEncontrado);
+            printf("\nConta excluida com sucesso!!\n");
+        } else {
+            printf("\nCPF não corresponde. Excluindo operaçao.\n");
+        }
+    } else {
+        printf("\nOperacao de exclusao cancelada.\n");
+    }
+
+    system("PAUSE");
+    limparTela();
+}
+
 void DadosConta(No *clienteEncontrado) {
 
     barraNaTela();
-    printf("    Dados Da Conta   ");
+    printf("    Dados Da Conta Pessoal  ");
     barraNaTela();
 
-    printf("\nConta Encontrada:\n");
     printf("Nome: %s\n", clienteEncontrado->cliente.nome);
     printf("Email: %s\n", clienteEncontrado->cliente.email);
     printf("Genero: %c\n", clienteEncontrado->cliente.genero);
@@ -365,6 +418,7 @@ void DadosConta(No *clienteEncontrado) {
     system("PAUSE");
     limparTela();
 }
+
 
 void acessarConta(No *cabeca) {
     char cpf[12];  
@@ -391,38 +445,50 @@ void acessarConta(No *cabeca) {
         printf("      Menu Da Conta:    ");
         barraNaTela();
 
-        printf("\n1. Dados Da Conta;\n");
+        printf("1. Dados Da Conta;\n");
         printf("2. Transferencias;\n");
-        printf("3. Fazer Depositos;\n");
-        printf("4. Excluir Conta;\n");
+        printf("3. Depositos;\n");
+        printf("4. Saques;\n");
         printf("5. Sair;\n");
+        printf("6. Excluir Conta;\n");
         printf("*Digite um dos valores: ");
         scanf("%d", &escolha);
 
         limparTela();
 
         switch (escolha) {
+            // Dados Contas
             case 1:
                 DadosConta(clienteEncontrado);
                 break;
+            // Transferencias
             case 2:
                 printf("Transferencias...\n");
                 system("PAUSE");
                 break;
+            // Depositos
             case 3:
                 printf("Depositos\n");
                 system("PAUSE");
                 break;
+            // Saques
             case 4:
-                printf("Excluir Conta;\n");
+                printf("Saques;\n");
                 system("PAUSE");
                 break;
+            // Sair
             case 5:
                 printf("Saindo Da Conta;\n");
                 system("PAUSE");
                 break;
+            // Excluir Conta
+            case 6:
+                excluirConta(&cabeca, clienteEncontrado);
+                
+                return;
+                break;
             default:
-                printf("\nPor favor, digite um valor de 1 a 5.\n");
+                printf("\nPor favor, digite um valor de 1 a 6.\n");
                 system("PAUSE");
                 break;
         }
@@ -434,7 +500,6 @@ void acessarConta(No *cabeca) {
         printf("\nCliente com CPF %s não encontrado.\n", cpf);
     }
 
-    barraNaTela();
     system("PAUSE");
     limparTela();
 
@@ -444,38 +509,38 @@ void acessarConta(No *cabeca) {
 
 //Funçao que inicializa o menu principal
 void menuPrincipal(int *escolha, Cliente *cliente, No** cabeca) {
-
     do { 
-    barraNaTela();
-    printf("\n          Sistema Bancario     \n");
-    barraNaTela();
-    printf("1. Criar Conta;\n");
-    printf("2. Acessar Conta;\n");
-    printf("3. Sair do programa;\n");
-    printf("Digite o numero de uma das opcoes validas: ");
-    scanf("%d", escolha);
+        barraNaTela();
+        printf("\n          Sistema Bancario     \n");
+        barraNaTela();
+        printf("1. Criar Conta;\n");
+        printf("2. Acessar Conta;\n");
+        printf("3. Sair do programa;\n");
+        printf("Digite o numero de uma das opcoes validas: ");
+        scanf("%d", escolha);
 
-    limparTela();
+        limparTela();
 
-    switch(*escolha){   
-        case 1:
-            criarConta(cliente);
-            inserirCliente(cabeca, *cliente);
-            break;
+        switch(*escolha){   
+            case 1:
+                criarConta(cliente);  // Criação de conta
+                inserirCliente(cabeca, *cliente);  // Inserção de cliente na lista
+                break;
 
-        case 2: 
-        acessarConta(*cabeca);
-        break;
+            case 2: 
+                acessarConta(*cabeca);  // Acesso à conta, passando a lista de clientes
+                break;
 
-        case 3:
-            /*encerrar programa*/
-            break;
-        default:
-            printf("\nPor favor, digite 1 ou 2\n");
-            break;
-    }
+            case 3:
+                /* Encerrar o programa */
+                break;
 
-} while (*escolha != 3);
+            default:
+                printf("\nPor favor, digite 1 ou 2\n");
+                break;
+        }
+
+    } while (*escolha != 3);  // Loop até que o usuário escolha sair (opção 3)
 }
 
 //Funçao principal
