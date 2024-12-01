@@ -462,50 +462,6 @@ int transferir(No* cabeca, int numeroContaOrigem, int numeroContaDestino, float 
     return 1;
 }
 
-int transferir(No* cabeca, int numeroContaOrigem, int numeroContaDestino, float valor) {
-    if (valor <= 0) {
-        printf("Valor de transferencia deve ser positivo.\n");
-        return 0;
-    }
-
-    if (numeroContaOrigem == numeroContaDestino) {
-        printf("Transferencia entre a mesma conta nao permitida.\n");
-        return 0;
-    }
-
-    No* origem = NULL;
-    No* destino = NULL;
-    No* atual = cabeca;
-
-    // Busca ambas as contas em uma única iteração
-    while (atual != NULL && (origem == NULL || destino == NULL)) {
-        if (atual->cliente.numeroConta == numeroContaOrigem) {
-            origem = atual;
-        } else if (atual->cliente.numeroConta == numeroContaDestino) {
-            destino = atual;
-        }
-        atual = atual->proximo;
-    }
-
-    if (origem == NULL || destino == NULL) {
-        printf("Conta%s nao encontrada.\n", origem == NULL ? " de origem" : " de destino");
-        return 0;
-    }
-
-    if (origem->cliente.saldo < valor) {
-        printf("Saldo insuficiente na conta de origem.\n");
-        return 0;
-    }
-
-    origem->cliente.saldo -= valor;
-    destino->cliente.saldo += valor;
-
-    printf("Transferencia de R$%.2f realizada com sucesso de conta %d para conta %d.\n", 
-           valor, numeroContaOrigem, numeroContaDestino);
-    return 1;
-}
-
-
 // funcao para deposito de valores na conta
 void depositar(No *clienteEncontrado){
     float valorDepositado;
@@ -620,8 +576,7 @@ void acessarConta(No *cabeca) {
         barraNaTela();
         printf("      Menu Da Conta:    ");
         barraNaTela();
-
-        printf("1. Dados Da Conta;\n");
+        
         printf("1. Dados Da Conta;\n");
         printf("2. Transferencias;\n");
         printf("3. Depositos;\n");
