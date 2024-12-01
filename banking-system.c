@@ -345,8 +345,29 @@ No *buscarPorCPF(No *cabeca, const char *cpf) {
     return NULL;
 }
 
+void DadosConta(No *clienteEncontrado) {
+
+    barraNaTela();
+    printf("    Dados Da Conta   ");
+    barraNaTela();
+
+    printf("\nConta Encontrada:\n");
+    printf("Nome: %s\n", clienteEncontrado->cliente.nome);
+    printf("Email: %s\n", clienteEncontrado->cliente.email);
+    printf("Genero: %c\n", clienteEncontrado->cliente.genero);
+    printf("Telefone: %s\n", clienteEncontrado->cliente.telefone);
+    printf("CPF: %s\n", clienteEncontrado->cliente.cpf);
+    printf("Saldo: R$ %.2f\n", clienteEncontrado->cliente.saldo);
+    printf("Tipo de Conta: %c\n", clienteEncontrado->cliente.tipoConta);
+    printf("Numero da Conta: %d\n", clienteEncontrado->cliente.numeroConta);
+
+    barraNaTela();
+    system("PAUSE");
+    limparTela();
+}
+
 void acessarConta(No *cabeca) {
-    char cpf[12];  // Define um array para armazenar o CPF do cliente a ser buscado
+    char cpf[12];  
 
     // Solicita o CPF para buscar a conta
     barraNaTela();
@@ -362,17 +383,53 @@ void acessarConta(No *cabeca) {
     No* clienteEncontrado = buscarPorCPF(cabeca, cpf);
 
     if (clienteEncontrado != NULL) {
-        
-        printf("\nConta Encontrada:\n");
-        printf("Nome: %s\n", clienteEncontrado->cliente.nome);
-        printf("Email: %s\n", clienteEncontrado->cliente.email);
-        printf("Genero: %c\n", clienteEncontrado->cliente.genero);
-        printf("Telefone: %s\n", clienteEncontrado->cliente.telefone);
-        printf("CPF: %s\n", clienteEncontrado->cliente.cpf);
-        printf("Saldo: R$ %.2f\n", clienteEncontrado->cliente.saldo);
-        printf("Tipo de Conta: %c\n", clienteEncontrado->cliente.tipoConta);
-        printf("Numero da Conta: %d\n", clienteEncontrado->cliente.numeroConta);
-    } else {
+
+    int escolha; // Declaração da variável escolha fora do loop
+
+    do {
+        barraNaTela();
+        printf("      Menu Da Conta:    ");
+        barraNaTela();
+
+        printf("\n1. Dados Da Conta;\n");
+        printf("2. Transferencias;\n");
+        printf("3. Fazer Depositos;\n");
+        printf("4. Excluir Conta;\n");
+        printf("5. Sair;\n");
+        printf("*Digite um dos valores: ");
+        scanf("%d", &escolha);
+
+        limparTela();
+
+        switch (escolha) {
+            case 1:
+                DadosConta(clienteEncontrado);
+                break;
+            case 2:
+                printf("Transferencias...\n");
+                system("PAUSE");
+                break;
+            case 3:
+                printf("Depositos\n");
+                system("PAUSE");
+                break;
+            case 4:
+                printf("Excluir Conta;\n");
+                system("PAUSE");
+                break;
+            case 5:
+                printf("Saindo Da Conta;\n");
+                system("PAUSE");
+                break;
+            default:
+                printf("\nPor favor, digite um valor de 1 a 5.\n");
+                system("PAUSE");
+                break;
+        }
+
+    } while (escolha != 5); // Verificação correta da condição do loop
+    } 
+    else {
         
         printf("\nCliente com CPF %s não encontrado.\n", cpf);
     }
