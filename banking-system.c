@@ -12,7 +12,7 @@
 typedef struct{
     char nome[50];
     char email[50];
-    char senha[8];
+    char senha[50];
     char genero; 
     char telefone[12];
     char cpf[12];
@@ -569,8 +569,13 @@ void acessarConta(No *cabeca) {
 
         printf("Digite a senha: ");
         scanf("%s", senha);
+        
+        if(strcmp(clienteEncontrado->cliente.senha, senha) !=0 ){
+            printf("\nSenha Incorreta. Acesso negado.\n");
+            return;
+        }
 
-    int escolha; // Declaração da variável escolha fora do loop
+    int escolha;
 
     do {
         barraNaTela();
