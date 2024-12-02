@@ -140,8 +140,9 @@ https://youtube.com/playlist?list=PL2_aWCzGMAwLZp6LMUKI3cc7pgGsasm2_&si=D4x8J2d9
 3.CORMEN, T. H.; LEISERSON, C. E.; RIVEST, R. L.; STEIN, C. Algoritmos: Teoria e Prática. Tradução de Arlete Simille. 11. tiragem. São Paulo: Elsevier, 2012.
 
 
-### Fluxograma:
-Segue o Fluxograma do projeto: 
+### Apêndices:
+
+## Apêndice A - Diagrama de bloco que ajuda a entender o funcionamento do sistema
 
 ![Fluxograma do Projeto](assets/FluxogramaFinal.jpg)
 
