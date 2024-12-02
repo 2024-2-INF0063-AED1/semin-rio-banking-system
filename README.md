@@ -144,6 +144,6 @@ https://youtube.com/playlist?list=PL2_aWCzGMAwLZp6LMUKI3cc7pgGsasm2_&si=D4x8J2d9
 
 ## Apêndice A - Diagrama de bloco que ajuda a entender o funcionamento do sistema
 
-![Fluxograma do Projeto](assets/Fluxogramaa.jpg)
+![Fluxograma do Projeto](assets/Fluxograma.png)
 
 
