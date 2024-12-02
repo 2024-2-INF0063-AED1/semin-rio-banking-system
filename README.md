@@ -133,8 +133,10 @@ Os resultados demonstraram que o programa atende plenamente aos critérios de ef
 ### Referências:
 1.FEOFILOFF,Paulo.Linked lists.Disponível em:
 https://www.ime.usp.br/~pf/algorithms/chapters/linked-lists.html .Acesso em: 23 nov. 2024.
+
 2.mycodeschool.Pointers in C/C++.Disponível em:
 https://youtube.com/playlist?list=PL2_aWCzGMAwLZp6LMUKI3cc7pgGsasm2_&si=D4x8J2d9NotG66ab .Acesso em: 19 nov. 2024.
+
 3.CORMEN, T. H.; LEISERSON, C. E.; RIVEST, R. L.; STEIN, C. Algoritmos: Teoria e Prática. Tradução de Arlete Simille. 11. tiragem. São Paulo: Elsevier, 2012.
 
 
