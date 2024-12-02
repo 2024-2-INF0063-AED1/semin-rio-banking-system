@@ -24,11 +24,6 @@ Sistema Bancário, Otimização , Modularização, Transações e Segurança;
 ### Problema
 Os sistemas bancários desempenham um papel fundamental ao permitir que os clientes realizem operações financeiras de forma rápida e prática, como saques, depósitos, transferências e consultas. No entanto, esses sistemas ainda hoje enfrentam desafios relacionados à segurança, eficiência e necessidade de manutenção constante.Nesse contexto,sistemas que garantam maior proteção ao usuário, adotando tecnologias de segurança e métodos de autenticação adequados, e que melhorem a velocidade das transações devem ser implementados.
 
-### Literatura
-
-* Estruturas de Dados e Seus Algoritmos - Jayme Luiz Szwarcfiter e Lilian Markenzon
-* 
-
 ### Dataset
 
 O dataset utilizado no projeto contém informações fornecidas pelos clientes no momento do cadastro (criação da conta), incluindo dados como nome, telefone, CPF, e-mail, gênero, tipo de conta, saldo, senha e um número de conta gerado automaticamente e aleatoriamente na hora do cadastro da conta.
@@ -70,7 +65,6 @@ Assim, a fim de obter feedbacks que possam nortear as próximas versões e conse
 
 
 ## Metodologia
-
 
 Para o  desenvolvimento do sistema bancário foram seguidos os seguintes passos:
 
@@ -131,12 +125,20 @@ O desenvolvimento do programa utilizando listas encadeadas resultou em um sistem
 
 Cada elemento alocado foi liberado corretamente ao final da execução, prevenindo vazamentos de memória, o que é essencial em linguagens como C, nas quais a gestão manual da memória é obrigatória. A função responsável pela liberação percorreu toda a lista, nó a nó, garantindo que todos os recursos alocados fossem devolvidos ao sistema.
 
-A escolha pelas listas encadeadas é respaldada teoricamente pelo renomado livro Algoritmos: Teoria e Prática, de Thomas H. Cormen, que destaca as vantagens dessa estrutura em cenários que demandam flexibilidade no uso da memória e eficiência em operações dinâmicas. A implementação também foi fundamentada em princípios discutidos em recursos confiáveis, como o site Gabriel Bueno - REA/AED e o portal de algoritmos do IME USP, ambos focados na aplicação prática de estruturas de dados em C.A orientação teórica fornecida pelos professores Bruna Michelly de Oliveira Silva e Aldo André Díaz Salazar foi crucial para o sucesso do projeto. As aulas e materiais disponibilizados por eles enfatizaram a importância da modularidade e do uso eficiente de estruturas dinâmicas.
+A escolha pelas listas encadeadas é respaldada teoricamente pelo renomado livro Algoritmos: Teoria e Prática, de Thomas H. Cormen, que destaca as vantagens dessa estrutura em cenários que demandam flexibilidade no uso da memória e eficiência em operações dinâmicas. A implementação também foi fundamentada em princípios discutidos em recursos confiáveis, como o portal de algoritmos do IME USP, ambos focados na aplicação prática de estruturas de dados em C.A orientação teórica fornecida pelos professores Bruna Michelly de Oliveira Silva e Aldo André Díaz Salazar foi crucial para o sucesso do projeto. As aulas e materiais disponibilizados por eles enfatizaram a importância da modularidade e do uso eficiente de estruturas dinâmicas.
 
 ### Conclusão:
 Os resultados demonstraram que o programa atende plenamente aos critérios de eficiência, segurança e modularidade, evidenciando sua viabilidade para aplicações práticas, como sistemas bancários. O projeto destacou a importância de um planejamento cuidadoso e de uma estrutura modular, que não apenas facilita a manutenção, mas também possibilita a expansão do sistema. Além disso, reforçou o papel fundamental das listas encadeadas como uma solução flexível e eficaz para lidar com problemas que envolvem dados dinâmicos.
 
-Fluxograma:
+### Referências:
+1.FEOFILOFF,Paulo.Linked lists.Disponível em:
+https://www.ime.usp.br/~pf/algorithms/chapters/linked-lists.html .Acesso em: 23 nov. 2024.
+2.mycodeschool.Pointers in C/C++.Disponível em:
+https://youtube.com/playlist?list=PL2_aWCzGMAwLZp6LMUKI3cc7pgGsasm2_&si=D4x8J2d9NotG66ab .Acesso em: 19 nov. 2024.
+3.CORMEN, T. H.; LEISERSON, C. E.; RIVEST, R. L.; STEIN, C. Algoritmos: Teoria e Prática. Tradução de Arlete Simille. 11. tiragem. São Paulo: Elsevier, 2012.
+
+
+### Fluxograma:
 Segue o Fluxograma do projeto: 
 
 ![Fluxograma do Projeto](assets/FluxogramaFinal.jpg)
