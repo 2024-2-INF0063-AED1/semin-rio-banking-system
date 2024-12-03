@@ -42,13 +42,12 @@ Os critérios utilizados para avaliar serão:
 ## Fundamentos Teóricos
 
 
-O sistema desenvolvido buscou soluções para os problemas expostos anteriormente.Para se alcançar esse fim, buscamos alguma estrutura de dados elementar que pudesse satisfazer as necessidades principais de um sistema bancário moderno, simulando suas principais funcionalidades, e a escolha feita foi pelas listas encadeadas.A seguir uma breve explicação teórica do que são esse tipo de listas:
+O sistema desenvolvido buscou soluções para os problemas expostos anteriormente.Para se alcançar esse fim, era necessário utilizar alguma estrutura de dados elementar que pudesse satisfazer as necessidades principais de um sistema bancário moderno e simular suas principais funcionalidades.Dessa forma,a escolha feita foi pelas listas encadeadas.A seguir uma breve explicação teórica do que são esse tipo de listas:
 
 * Listas Encadeadas (Linked Lists) :
-
 Uma lista ligada(encadeada) é uma estrutura de dados na qual os objetos estão organizados em ordem linear, ordem essa determinada por um ponteiro em cada objeto.Além disso,as listas ligadas nos dão uma representação simples e flexível para conjuntos dinâmicos, suportando todas as operações que aparecem na lista. 
 
-A escolha pelas listas foi bem natural justamente por se tratar de uma estrutura altamente prática e flexível, atingiu diversos setores do projeto e forneu as ferramentas para desenvolver as funcionalidades centrais do sistema.
+A escolha pelas listas foi bem natural justamente por se tratar de uma estrutura altamente prática e flexível, atingiu diversos setores do projeto e forneceu as ferramentas para desenvolver as funcionalidades centrais do sistema.
 
 Na optica da avaliação, o sistema será avaliado pelas seguintes técnicas:
 
