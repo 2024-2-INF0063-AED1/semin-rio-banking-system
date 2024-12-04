@@ -149,6 +149,7 @@ https://youtube.com/playlist?list=PL2_aWCzGMAwLZp6LMUKI3cc7pgGsasm2_&si=D4x8J2d9
 ## Apência B - Execução de Testes
 
 ![Gravação-de-Tela-2024-12-03-221413](https://github.com/user-attachments/assets/59b04cdb-c688-4964-80e5-25d1dd826fea)
+![Gravação-de-Teça](assets/SegundoGIF.gif)
 
 
 
