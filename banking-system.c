@@ -89,13 +89,13 @@ void exibirClientes(No* cabeca) {
 // funcao com a logica de validacao do nome
 bool validaNome(Cliente *cliente){
     if(strlen(cliente->nome) < 3){
-        printf("O nome deve ter pelo menos 3 caracteres");
+        printf("\nO nome deve ter pelo menos 3 caracteres\n");
         return false;
     }
     for(int i = 0; cliente->nome[i] != '\0'; i++){
         if((!isalpha(cliente->nome[i]) && !isspace(cliente->nome[i]))){
 
-             printf("O nome deve conter apenas letras e espacos\n");
+             printf("\nO nome deve conter apenas letras e espacos\n");
              return false;
         }
     }
@@ -108,7 +108,7 @@ bool validaNome(Cliente *cliente){
 bool validaSenha(Cliente *cliente){
     int temNumero = 0, temCaractere = 0, temMaiuscula = 0;
     if(strlen(cliente->senha) < 8){
-        printf("A senha deve ter pelo menos 8 caracteres");
+        printf("\nA senha deve ter pelo menos 8 caracteres.\n");
         return false;
     }
     for(int i = 0; cliente->senha[i] != '\0'; i++){
@@ -123,7 +123,7 @@ bool validaSenha(Cliente *cliente){
         }
     }
     if((!temNumero) || (!temMaiuscula) || (!temCaractere)){
-        printf("A senha deve ter pelo menos um numero, uma maiuscula e um caractere\n");
+        printf("\nA senha deve ter pelo menos um numero, uma maiuscula e um caractere\n");
         return false;
     }
     
@@ -135,7 +135,7 @@ bool validaSenha(Cliente *cliente){
 bool validaGenero(Cliente *cliente){
     cliente->genero = tolower(cliente->genero);
     if((cliente->genero != 'm') && (cliente->genero != 'f') &&(cliente->genero != 'o')){
-        printf("Informe uma das opcoes validas");
+        printf("\nInforme uma das opcoes validas\n");
         return false;
         
     }
@@ -145,13 +145,13 @@ bool validaGenero(Cliente *cliente){
 // funcao com a logica de validacao do telefone
 bool validaTelefone(Cliente *cliente){
     if(strlen(cliente->telefone) != 11){
-        printf("O telefone deve ter 11 digitos");
+        printf("\nO telefone deve ter 11 digitos\n");
         return false;
     }
 
     for(int i = 0; cliente->telefone[i] != '\0'; i++){
         if(!isdigit(cliente->telefone[i])){
-            printf("O telefone deve conter apenas numeros");
+            printf("\nO telefone deve conter apenas numeros\n");
             return false;
         }
     }
@@ -163,7 +163,7 @@ bool validaTelefone(Cliente *cliente){
 bool validaTipoDeConta(Cliente *cliente){
     cliente->tipoConta = tolower(cliente->tipoConta);
     if((cliente->tipoConta != 'c') && (cliente->tipoConta != 'j') &&(cliente->tipoConta != 'p')){
-        printf("Informe uma das opcoes validas");
+        printf("\nInforme uma das opcoes validas");
         return false;
         
     }
@@ -174,7 +174,7 @@ bool validaTipoDeConta(Cliente *cliente){
 //funcao com a logica de validacao do saldo informado pelo usuario
 bool validaSaldoDaConta(Cliente *cliente){
     if(cliente->saldo < 0){
-        printf("Informe um valor valido para deposito inicial");
+        printf("\nInforme um valor valido para deposito inicial");
         return false;
     }
     return true;
@@ -273,38 +273,38 @@ void criarConta (Cliente *cliente){
 
     printf("Email: ");
     scanf("%s", cliente->email);
-    printf("%s\n",cliente -> email);
+    printf("Email: %s\n",cliente -> email);
 
     do{
         printf("Senha(min. 8): ");
         scanf("%s", cliente->senha);
-        printf("%s\n", cliente->senha);
+        printf("Senha: %s\n", cliente->senha);
     }while(!validaSenha(cliente));
 
     do{
         printf("Genero feminino(F)/Masculino(M)/Outro(O): ");
         getchar();
         scanf("%c", &cliente->genero);
-        printf("%c\n",cliente->genero);
+        printf("Genero: %c\n",cliente->genero);
     }while(!validaGenero(cliente));
     
     do{
-        printf("Telefone:");
+        printf("Telefone: ");
         scanf("%s", cliente->telefone);
-        printf("%s\n",cliente->telefone);
+        printf("Telefone: %s\n",cliente->telefone);
     }while(!validaTelefone(cliente));
    
 
     do{
         printf("CPF: ");
         scanf("%s", cliente->cpf);
-        printf("%s\n", cliente->cpf);
+        printf("CPF: %s\n", cliente->cpf);
     }while(!validaCpf(cliente));
     
     do{
         printf("Insira um valor para abrir a conta: R$ ");
         scanf("%f", &cliente->saldo);
-        printf("%f\n", cliente->saldo);
+        printf("Valor Inicial: %.2f\n", cliente->saldo);
     }while(!validaSaldoDaConta(cliente));
     
 
@@ -315,7 +315,7 @@ void criarConta (Cliente *cliente){
         printf("[P] - Poupanca;\n");
         getchar();
         scanf("%c", &cliente->tipoConta);
-        printf("%c\n",cliente->tipoConta);
+        printf("Tipo de Conta: %c\n",cliente->tipoConta);
     }while(!validaTipoDeConta(cliente));
     
 
@@ -325,7 +325,7 @@ void criarConta (Cliente *cliente){
 
     barraNaTela();
 
-    printf("Cadastro feito com sucesso!!!\n");
+    printf("\nCadastro feito com sucesso!!!\n");
 
     barraNaTela();
 
@@ -470,28 +470,28 @@ void depositar(No *clienteEncontrado){
     
     do{
         barraNaTela();
-        printf("    Deposito   ");
+        printf("       Deposito   ");
         barraNaTela();
-        printf("Por favor, informe o CPF para validar a operação: \n");
+        printf("Por favor, informe o CPF para validar a operacao: ");
         scanf("%s", cpfConfirmacao);
 
         
         if (strcmp(cpfConfirmacao, clienteEncontrado->cliente.cpf) == 0) {
 
-            printf("Digite o valor do deposito R$ \n");
+            printf("Digite o valor do deposito: R$ ");
             scanf("%f", &valorDepositado);
 
             clienteEncontrado->cliente.saldo +=  valorDepositado;
 
             printf("Valor depositado com seu sucesso!\n");
-            printf("Seu saldo atual R$ %.2f", clienteEncontrado->cliente.saldo);
+            printf("Seu saldo atual R$ %.2f\n", clienteEncontrado->cliente.saldo);
 
             barraNaTela();
             system("PAUSE");
             limparTela();
         }
         else {
-            printf("Conta inexistente com esse CPF.Tente novamente\n");
+            printf("Conta inexistente com esse CPF.Tente novamente.\n");
             system("PAUSE");
             limparTela();
 
@@ -514,6 +514,7 @@ void calcularJuros(No *clienteEncontrado, float *juros){
     }
    
 }
+
 // funcao para sacar um valor
 void sacar(No *clienteEncontrado){
     float valorSacado;
@@ -521,20 +522,20 @@ void sacar(No *clienteEncontrado){
     float juros;
     do{
         barraNaTela();
-        printf("    Saque   ");
+        printf("         Saque   ");
         barraNaTela();
-        printf("Por favor, informe o CPF para validar a operação: \n");
+        printf("Por favor, informe o CPF para validar a operacao: ");
         scanf("%s", cpfConfirmacao);
 
         if (strcmp(cpfConfirmacao, clienteEncontrado->cliente.cpf) == 0) {
 
-            printf("Digite o valor para o saque R$ \n");
+            printf("Digite o valor para o saque: R$ ");
             scanf("%f", &valorSacado);
             calcularJuros(clienteEncontrado, &juros);
             clienteEncontrado->cliente.saldo = clienteEncontrado->cliente.saldo - (valorSacado + (valorSacado * juros));
 
             printf("Valor sacado com sucesso!\n");
-            printf("Seu saldo atual R$ %.2f", clienteEncontrado->cliente.saldo);
+            printf("Seu saldo atual R$ %.2f\n", clienteEncontrado->cliente.saldo);
 
             barraNaTela();
             system("PAUSE");
@@ -551,6 +552,7 @@ void sacar(No *clienteEncontrado){
 void acessarConta(No *cabeca) {
     char cpf[12];  
     char senha [8];
+
 
     // Solicita o CPF para buscar a conta
     barraNaTela();
@@ -573,8 +575,9 @@ void acessarConta(No *cabeca) {
         if(strcmp(clienteEncontrado->cliente.senha, senha) !=0 ){
             printf("\nSenha Incorreta. Acesso negado.\n");
             return;
+            
         }
-
+    
     int escolha;
 
     do {
@@ -628,13 +631,12 @@ void acessarConta(No *cabeca) {
                 break;
             // Sair
             case 5:
-                printf("Saindo Da Conta;\n");
+                printf("Saindo Da Conta...\n");
                 system("PAUSE");
                 break;
             // Excluir Conta
             case 6:
                 excluirConta(&cabeca, clienteEncontrado);
-                
                 return;
                 break;
             default:
@@ -652,7 +654,6 @@ void acessarConta(No *cabeca) {
 
     system("PAUSE");
     limparTela();
-
     getchar();  
     getchar();  
 }
@@ -666,11 +667,13 @@ void menuPrincipal(int *escolha, Cliente *cliente, No** cabeca) {
     printf("1. Criar Conta;\n");
     printf("2. Acessar Conta;\n");
     printf("3. Sair do programa;\n");
+    printf("\n*Digite de um dos valores(1-3): ");
     scanf("%d", escolha);
 
         limparTela();
 
         switch(*escolha){   
+
             case 1:
                 criarConta(cliente);  // Criação de conta
                 inserirCliente(cabeca, *cliente);  // Inserção de cliente na lista
