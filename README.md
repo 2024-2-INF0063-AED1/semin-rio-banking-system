@@ -66,7 +66,7 @@ Assim, a fim de obter feedbacks que possam nortear as próximas versões e conse
 
 ## Metodologia
 
-Para o  desenvolvimento do sistema bancário foram seguidos os seguintes passos:
+Para o  desenvolvimento do sistema bancário foram feitos os seguintes passos:
 
 ### Planejamento:
 
@@ -108,10 +108,6 @@ Após a autenticação, o usuário pode realizar as seguintes operações:Depós
   
 ### Testes:
 
-* Gerenciamento de contas:
-
-  Garantir que as contas bancárias sejam localizadas de forma rápida e eficiente, com tratamento adequado de possíveis colisões de dados;
-
 * Processamento de transações:
 
   Assegurar que as transações como saques e depósitos estejam funcionais, com suas devidas autenticações funcionando;
@@ -128,7 +124,7 @@ Cada elemento alocado foi liberado corretamente ao final da execução, prevenin
 A escolha pelas listas encadeadas é respaldada teoricamente pelo renomado livro Algoritmos: Teoria e Prática, de Thomas H. Cormen, que destaca as vantagens dessa estrutura em cenários que demandam flexibilidade no uso da memória e eficiência em operações dinâmicas. A implementação também foi fundamentada em princípios discutidos em recursos confiáveis, como o portal de algoritmos do IME USP, ambos focados na aplicação prática de estruturas de dados em C.A orientação teórica fornecida pelos professores Bruna Michelly de Oliveira Silva e Aldo André Díaz Salazar foi crucial para o sucesso do projeto. As aulas e materiais disponibilizados por eles enfatizaram a importância da modularidade e do uso eficiente de estruturas dinâmicas.
 
 ### Conclusão:
-Os resultados demonstraram que o programa atende plenamente aos critérios de eficiência e segurança, evidenciando sua viabilidade para aplicações práticas O projeto destacou a importância de um planejamento cuidadoso e de uma estrutura modular, que não apenas facilita a manutenção, mas também possibilita a expansão do sistema. Além disso, reforçou o papel fundamental das listas encadeadas como uma solução flexível e eficaz para lidar com problemas que envolvem dados dinâmicos.
+Os resultados demonstraram que o programa atende plenamente aos critérios de eficiência e segurança, evidenciando sua viabilidade para aplicações práticas. O projeto destacou a importância de um planejamento cuidadoso e de uma estrutura modular, que não apenas facilita a manutenção, mas também possibilita a expansão do sistema. Além disso, reforçou o papel fundamental das listas encadeadas como uma solução flexível e eficaz para lidar com problemas que envolvam dados dinâmicos.
 
 ### Referências:
 1.FEOFILOFF,Paulo.Linked lists.Disponível em:
