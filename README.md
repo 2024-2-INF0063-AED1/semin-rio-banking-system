@@ -37,7 +37,7 @@ O projeto desenvolvido utiliza conceitos de estrutura de dados, ponteiros e algo
 Os critérios utilizados para avaliar serão:
    * Tempo de Execução;
    * Uso de Memória; 
-   *Escabilidade;
+   * Escabilidade;
 Pontos estes que serão melhor discutidos abaixo.
 
 ## Fundamentos Teóricos
