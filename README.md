@@ -37,7 +37,8 @@ O projeto desenvolvido utiliza conceitos de estrutura de dados, ponteiros e algo
 Os critérios utilizados para avaliar serão:
    * Tempo de Execução;
    * Uso de Memória; 
-   * Nível de manutenção e modularidade;
+   *Escabilidade;
+Pontos estes que serão melhor discutidos abaixo.
 
 ## Fundamentos Teóricos
 
@@ -110,7 +111,7 @@ Após a autenticação, o usuário pode realizar as seguintes operações:Depós
 
 * Processamento de transações:
 
-  Assegurar que as transações como saques e depósitos estejam funcionais, com suas devidas autenticações funcionando;
+  Assegurar que as transações como saques, depósitos e transferências estejam funcionais, com suas devidas autenticações funcionando.Além disso garantir que tais operações sejam ágeis;
 
 * Armazenamento de informações de conta:
 
